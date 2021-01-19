@@ -8,22 +8,24 @@
         <time datetime="{{date format="YYYY-MM-DDTHH:MM"}}">{{date format="DD MMM YYYY"}}</time>
         <span class="post tags">{{tags prefix="in " separator=" "}}</span>
 
-        {{!> post-author}}
-
         <span class="post reading-time"> ~ <span></span> read.</span>
       </div>
-      <a title="{{title}}">
+      <div>
         {{#if feature_image}}
           <img id="post-image" src="{{img_url feature_image}}" alt="{{title}}">
         {{/if}}
         <h1 class="icon-reverse" id="post-title">{{title}}</h1>
-      </a>
+      </div>
     </header>
 
-    <div id="post-content" class="{{post_class}}">
-      {{content}}
+    <div class="post-content-toc-wapper">
+      <aside id="toc-aside">
+        <ol id="toc"><h2>目录</h2></ol>
+      </aside>
+      <div id="post-content" class="{{post_class}}">
+        {{content}}
+      </div>
     </div>
-
     <div class="post related">
       {{#prev_post}}
         <a rel="prev" id="prev-btn" class="btn small square" href="{{url}}">← {{title}}</a>

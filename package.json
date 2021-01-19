@@ -22,15 +22,20 @@
     "ghost-theme"
   ],
   "devDependencies": {
-    "browser-sync": "latest",
-    "underscore.string": "latest",
-    "coffeescript": "latest",
+    "browser-sync": "^2.26.13",
+    "underscore.string": "^3.3.5",
+    "coffeescript": "^2.5.1",
     "autoprefixer": "^9.8.5",
     "del": "^4.1.1",
     "gulp": "^4.0.2",
-    "gulp-header": "latest",
+    "gulp-util": "^3.0.8",
+    "gulp-add-src": "^1.0.0",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-header": "^2.0.9",
+    "gulp-changed": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-merge": "^0.1.1",
     "gulp-jsbeautifier": "^3.0.1",
     "gulp-jshint": "^2.1.0",
     "gulp-plumber": "^1.2.1",
@@ -38,7 +43,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
-    "gulp-uglifyes": "latest",
+    "gulp-terser": "^2.0.1",
     "gulp-coffee": "latest",
     "gulp-wait": "0.0.2",
     "gulp-zip": "^5.0.2",
@@ -51,5 +56,8 @@
     "node": "^4.2.0",
     "ghost-api": "v3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bourbon": "^7.0.0"
+  }
 }

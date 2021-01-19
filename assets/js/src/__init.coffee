@@ -15,7 +15,12 @@ do ->
     context: ->
       # get the context from the first class name of body
       # https://github.com/TryGhost/Ghost/wiki/Context-aware-Filters-and-Helpers
-      className = document.body.className.split(' ')[0].split('-')[0]
+      classNameList = document.body.className.split(' ')
+      regex = /(.*?)-template/
+      className = ''
+      for item in classNameList
+        temp = regex.exec(item)
+        if temp != null then className = temp[1]
       if className is '' then 'error' else className
 
     linkify: (selector) ->
