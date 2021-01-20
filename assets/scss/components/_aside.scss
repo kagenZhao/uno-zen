@@ -7,8 +7,8 @@
   height: 100%;
   overflow-y: auto;
 
-  border-right: 1px solid $gray;
-  box-shadow: 10.5px -10px 1px -9px $gray-light;
+  //border-right: 1px solid $gray;
+  //box-shadow: 10.5px -10px 1px -9px $gray-light;
 
   &.animated {
     transition: width $aside-animation-time $aside-animation;
@@ -24,11 +24,11 @@
   &.container {
     text-align: center;
 
-    color: $gray-lightest;
+    //color: $gray-lightest;
 
     @extend %font-shadow;
     @extend %center-absolute;
-    @extend %background-filter;
+    //@extend %background-filter;
   }
 }
 
