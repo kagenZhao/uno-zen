@@ -3,6 +3,9 @@ node_modules/
 .sass-cache/
 .publish
 _docpress
-builds
+builds/
+build/
+dist/
 *sublime*
 .gh-pages
+.idea/

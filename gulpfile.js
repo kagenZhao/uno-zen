@@ -14,21 +14,25 @@ var header = require('gulp-header');
 var coffee = require("gulp-coffee");
 var plumber = require('gulp-plumber');
 var wait = require('gulp-wait');
+var zip = require('gulp-zip');
 
 var browserSync = require('browser-sync').create();
 var pkg = require('./package.json');
-var _s = require('underscore.string')
+var _s = require('underscore.string');
 
 var PORT = {
   "GHOST": 2368,
   "BROWSERSYNC": 3000
-}
+};
+
+var buildDir = './build/';
+var exportDir = './dist/';
 
 var dist = {
   "name": _s.slugify(pkg.name),
   "css": 'assets/css',
   "js": 'assets/js'
-}
+};
 
 var src = {
   "sass": {
@@ -59,7 +63,7 @@ var src = {
     "main": 'assets/css/' + dist.name + '.css',
     "vendor": ['assets/scss/bourbon/**/**']
   }
-}
+};
 var banner = ["/**",
   ` * ${pkg.name} - ${pkg.description}`,
   ` * @version ${pkg.version}`,
@@ -67,7 +71,7 @@ var banner = ["/**",
   ` * @author  ${pkg.author.name} (${pkg.author.url})`,
   ` * @license ${pkg.license}`,
   " */",
-  ""].join("\n")
+  ""].join("\n");
 
 
 gulp.task('js-common', function () {
@@ -77,7 +81,7 @@ gulp.task('js-common', function () {
     .pipe(concat(dist.name + '.common.js'))
     .pipe(terser().on('error', gutil.log))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.js))
+    .pipe(gulp.dest(dist.js));
 });
 
 gulp.task('js-vendor', function () {
@@ -87,7 +91,7 @@ gulp.task('js-vendor', function () {
     .pipe(concat(dist.name + '.vendor.js'))
     .pipe(terser().on('error', gutil.log))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.js))
+    .pipe(gulp.dest(dist.js));
 })
 
 
@@ -102,7 +106,7 @@ gulp.task('js-post', function () {
       }
     }))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.js))
+    .pipe(gulp.dest(dist.js));
 });
 
 gulp.task('css', function () {
@@ -111,7 +115,7 @@ gulp.task('css', function () {
     .pipe(addsrc(src.sass.main))
     .pipe(plumber())
     .pipe(wait(100))
-    .pipe(sass({ outputStyle: 'expanded' }).on('error', gutil.log))
+    .pipe(sass({outputStyle: 'expanded'}).on('error', gutil.log))
     .pipe(concat('' + dist.name + '.css'))
     .pipe(postcss([autoprefixer(), cssvariables({preserve: true})]))
     .pipe(cleanCSS({
@@ -124,9 +128,9 @@ gulp.task('css', function () {
 });
 
 gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-post'))
-gulp.task('build', gulp.series('css', 'js'))
+gulp.task('preBuild', gulp.series('css', 'js'))
 
-gulp.task('watch', gulp.series('build', function () {
+gulp.task('watch', gulp.series('preBuild', function () {
   browserSync.init({
     proxy: "http://localhost:" + PORT.GHOST,
     port: PORT.BROWSERSYNC,
@@ -136,6 +140,26 @@ gulp.task('watch', gulp.series('build', function () {
   gulp.watch(src.js.common.main, {allowEmpty: true}).on('change', gulp.series('js-common', browserSync.reload));
   gulp.watch(src.js.post).on('change', gulp.series('js-post', browserSync.reload))
   gulp.watch('./**/*.hbs').on('change', browserSync.reload);
+}));
+
+gulp.task('build', gulp.series('preBuild', function () {
+  return gulp.src([
+    "**",
+    "!assets/scss", "!assets/scss/**/*",
+    "!assets/vendor/**/*",
+    "!assets/js/src/*",
+    "!node_modules", "!node_modules/**",
+    "!build", "!build/**",
+    "!dist", "!dist/**"
+  ])
+    .pipe(gulp.dest(buildDir));
+}));
+
+gulp.task('zip', gulp.series('build', function () {
+  var fileName = pkg.name + '.zip';
+  return gulp.src(['build/**/*'])
+    .pipe(zip(fileName))
+    .pipe(gulp.dest(exportDir));
 }));
 
 gulp.task('default', gulp.parallel('watch'));

@@ -36,6 +36,11 @@
     {{> footer}}
   </section>
 </main>
+<script>
+  var ghost_api_key = "77a814f693ac0ee9853c3d642a"
+  var ghost_root_url = "/ghost/api/v3";
+  var ghosthunter_key = ghost_api_key;
+</script>
 {{ghost_foot}}
 <script src="/highlight/highlight.pack.js"></script>
 <script>
@@ -48,10 +53,6 @@
     $("#toc").toc({content: "#post-content", headings: "h1, h2, h3, h4, h5, h6"});
   </script>
 {{/is}}
-<script>
-  var ghost_root_url = "http://localhost:3000/ghost/api/v3";
-  var ghosthunter_key = "73450264d8c9e0ac804e3bbb82";
-</script>
 <script>
   if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function(){
