@@ -47,7 +47,8 @@ var src = {
         'assets/vendor/jquery.toc.min.js',
         'assets/vendor/fastclick.js',
         'assets/vendor/pace.min.js',
-        'assets/vendor/readingTime.min.js'
+        'assets/vendor/readingTime.min.js',
+        'assets/vendor/jquery.ghosthunter.js'
       ]
     },
     "post": [

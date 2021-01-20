@@ -25,5 +25,23 @@ $ ->
       s.setAttribute 'src','https://nthitz.github.io/turndownforwhatjs/tdfw.js'
       document.body.appendChild s
 
-  $('#search-input').keyup (e) ->
-    $('#search-form').attr('action', Uno.search.url + '+' + encodeURIComponent(e.target.value))
+  $('#search-click-field').focus (e) ->
+    $('#search-click-field').blur();
+    document.getElementById('search-showing-content').style.display = 'block';
+    document.getElementById('search-showing-background').style.display = 'block';
+
+  $('#search-form-close-button').click (e) ->
+    document.getElementById('search-showing-content').style.display='none';
+    document.getElementById('search-showing-background').style.display='none'
+
+  $('#search-field').ghostHunter({
+    results: "#results",
+    onKeyUp: true,
+    onPageLoad: true,
+    result_template: "<div><a id='gh-{{ref}}' class='gh-search-item' href='{{link}}'><p><h2>{{title}}</h2><h4>{{pubDate}}</h4></p></a></div>"
+  });
+
+  $(window).keyup (ev) ->
+    if ev.keyCode == 27
+      $('#search-form-close-button').trigger('click')
+

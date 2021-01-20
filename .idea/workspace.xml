@@ -2,73 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee492c8e-2f12-42e6-9eeb-19deb2010e3d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/js/uno-zen.vendor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/_bourbon.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/helpers/_buttons-list.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/helpers/_scales.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/helpers/_text-inputs-list.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_border-color.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_border-radius.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_border-style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_border-width.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_clearfix.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_contrast-switch.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_ellipsis.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_font-face.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_font-stacks.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_hide-text.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_hide-visually.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_margin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_modular-scale.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_overflow-wrap.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_padding.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_position.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_prefixer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_shade.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_size.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_strip-unit.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_text-inputs.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_timing-functions.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_tint.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_triangle.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/library/_value-prefixer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/settings/_settings.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_assign-inputs.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_compact-shorthand.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_contrast-ratio.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_directional-property.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_fetch-bourbon-setting.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_font-source-declaration.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_gamma.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_lightness.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/utilities/_unpack-shorthand.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/validators/_contains-falsy.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/validators/_contains.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/validators/_is-color.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/validators/_is-length.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/validators/_is-number.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/bourbon/bourbon/validators/_is-size.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor/fastclick.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor/jquery-3.5.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor/jquery.fitvids.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor/jquery.toc.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor/pace.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/vendor/readingtime.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/page-archives.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/vendor/jquery.ghosthunter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/uno-zen.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/uno-zen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/src/__init.coffee" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/src/__init.coffee" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/src/main.coffee" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/src/main.coffee" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/uno-zen.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/uno-zen.common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/uno-zen.post.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/uno-zen.post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/components/_media-queries.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/_media-queries.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/uno-zen.vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/uno-zen.vendor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/scss/components/_post.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/_post.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/components/_search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/_search.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/default.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/default.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/post.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/partials/search.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/partials/search.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +70,7 @@
     <option name="height" value="970" />
   </component>
   <component name="ProjectId" id="1nGcc3LpQrqkeYTOGZt5fnIhtyf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -191,7 +137,7 @@
       <workItem from="1499004389202" duration="39000" />
       <workItem from="1499085979924" duration="324000" />
       <workItem from="1506326760651" duration="921000" />
-      <workItem from="1611019972780" duration="24332000" />
+      <workItem from="1611019972780" duration="35965000" />
     </task>
     <servers />
   </component>

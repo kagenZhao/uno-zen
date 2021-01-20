@@ -11,6 +11,23 @@
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
+<div id="search-showing-content">
+<!--  <button id="search-form-close-button">-->
+<!--    Close-->
+<!--  </button>-->
+  <div id="search-form-close-button">
+    <div id="search-form-close-button-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.021,13.435,1.414,24.042,0,22.628,10.607,12.021,0,1.414,1.414,0,12.021,10.607,22.628,0l1.414,1.414L13.435,12.021,24.042,22.628l-1.414,1.414Z"></path></svg>
+    </div>
+  </div>
+  <div>
+    <form style="text-align: center">
+      <input type="search" id="search-field"/>
+      <section id="results" style="text-align:center"></section>
+    </form>
+  </div>
+</div>
+<div id="search-showing-background"></div>
 <header id="menu-button" class="expanded">
   <a><i class="icon icon-list"></i></a>
 </header>
@@ -34,6 +51,10 @@
     $("#toc").toc({content: "#post-content", headings: "h1, h2, h3, h4, h5, h6"});
   </script>
 {{/is}}
+<script>
+  var ghost_root_url = "http://localhost:3000/ghost/api/v3";
+  var ghosthunter_key = "73450264d8c9e0ac804e3bbb82";
+</script>
 {{> google-analytics}}
 </body>
 </html>
