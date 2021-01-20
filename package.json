@@ -58,6 +58,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bourbon": "^7.0.0"
+    "bourbon": "^7.0.0",
+    "fastclick": "^1.0.6"
   }
 }

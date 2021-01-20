@@ -35,7 +35,7 @@ do ->
 
     search:
       form: do ->
-        context =  $('#search-container')
+        context =  $('#search-click-container')
         (action) -> context[action]()
 
     timeAgo: (selector) ->

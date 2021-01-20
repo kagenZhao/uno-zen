@@ -15,7 +15,6 @@ var coffee = require("gulp-coffee");
 var plumber = require('gulp-plumber');
 var wait = require('gulp-wait');
 
-
 var browserSync = require('browser-sync').create();
 var pkg = require('./package.json');
 var _s = require('underscore.string')

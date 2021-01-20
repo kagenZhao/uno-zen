@@ -7,14 +7,11 @@
         type='text/css'>
   <link rel="stylesheet" type="text/css" href="{{asset "css/uno-zen.css"}}"/>
   <link rel="stylesheet" href="/highlight/styles/tomorrow.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{asset "css/font-awesome.min.css"}}">
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
 <div id="search-showing-content">
-<!--  <button id="search-form-close-button">-->
-<!--    Close-->
-<!--  </button>-->
   <div id="search-form-close-button">
     <div id="search-form-close-button-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.021,13.435,1.414,24.042,0,22.628,10.607,12.021,0,1.414,1.414,0,12.021,10.607,22.628,0l1.414,1.414L13.435,12.021,24.042,22.628l-1.414,1.414Z"></path></svg>
@@ -22,18 +19,18 @@
   </div>
   <div>
     <form style="text-align: center">
-      <input type="search" id="search-field"/>
-      <section id="results" style="text-align:center"></section>
+      <input type="search" id="search-field" placeholder="Type to search"/>
+      <section id="search-results" style="text-align:center"></section>
     </form>
   </div>
 </div>
 <div id="search-showing-background"></div>
 <header id="menu-button" class="expanded">
-  <a><i class="icon icon-list"></i></a>
+  <a><i id="menu-button-menu" class="icon icon-list"></i></a>
+  <a><i id="menu-button-search" class="icon icon-search-1"></i></a>
 </header>
 {{> aside}}
 <main>
-  <section id="search-results"></section>
   <section class="content">
     {{{body}}}
     {{> footer}}
@@ -54,6 +51,13 @@
 <script>
   var ghost_root_url = "http://localhost:3000/ghost/api/v3";
   var ghosthunter_key = "73450264d8c9e0ac804e3bbb82";
+</script>
+<script>
+  if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function(){
+      FastClick.attach(document.body);
+    }, false);
+  }
 </script>
 {{> google-analytics}}
 </body>

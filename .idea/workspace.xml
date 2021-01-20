@@ -2,17 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee492c8e-2f12-42e6-9eeb-19deb2010e3d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/vendor/jquery.ghosthunter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/fontawesome-webfont.woff2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/uno-zen.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/uno-zen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/src/__init.coffee" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/src/__init.coffee" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/src/cover.coffee" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/src/cover.coffee" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/src/main.coffee" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/src/main.coffee" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/uno-zen.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/uno-zen.common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/uno-zen.vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/uno-zen.vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/components/_media-queries.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/_media-queries.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/scss/components/_post.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/_post.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/scss/components/_search.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/components/_search.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/modules/_fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/modules/_fonts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/vendor/fastclick.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/vendor/fastclick.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/default.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/default.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/partials/search.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/partials/search.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +81,9 @@
     <option name="height" value="970" />
   </component>
   <component name="ProjectId" id="1nGcc3LpQrqkeYTOGZt5fnIhtyf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -106,6 +119,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -117,6 +131,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -137,7 +152,7 @@
       <workItem from="1499004389202" duration="39000" />
       <workItem from="1499085979924" duration="324000" />
       <workItem from="1506326760651" duration="921000" />
-      <workItem from="1611019972780" duration="35965000" />
+      <workItem from="1611019972780" duration="44337000" />
     </task>
     <servers />
   </component>
@@ -169,6 +184,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/partials/aside.hbs">

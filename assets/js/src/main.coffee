@@ -2,13 +2,16 @@
 
 $ ->
 
-  if Uno.is 'device', 'desktop'
-    $('a').not('[href*="mailto:"]').click ->
-      if this.href.indexOf(location.hostname) is -1
-        window.open $(this).attr 'href'
-        false
-  else
-    FastClick.attach Uno.app
+#  if Uno.is 'device', 'desktop'
+#    $('a').not('[href*="mailto:"]').click ->
+#      if this.href.indexOf(location.hostname) is -1
+#        window.open $(this).attr 'href'
+#        false
+#  else
+#    $(window).ready ->
+#      console.log("calskjndkaljbdklajbsdkfljb")
+#      FastClick.attach Uno.app
+
 
   if Uno.is('page', 'home') or Uno.is('page', 'paged') or Uno.is('page', 'tag')
     Uno.timeAgo '#posts-list time'
@@ -26,22 +29,28 @@ $ ->
       document.body.appendChild s
 
   $('#search-click-field').focus (e) ->
-    $('#search-click-field').blur();
-    document.getElementById('search-showing-content').style.display = 'block';
-    document.getElementById('search-showing-background').style.display = 'block';
+    $('#menu-button-search').click()
 
-  $('#search-form-close-button').click (e) ->
-    document.getElementById('search-showing-content').style.display='none';
-    document.getElementById('search-showing-background').style.display='none'
+
+  $('#search-form-close-button-icon').click (e) ->
+    $('#search-showing-content')[0].classList.remove('search-visible')
+    $('#search-showing-background')[0].classList.remove('search-visible')
+
+  $('#menu-button-search').click (e) ->
+    $('#search-click-field').blur();
+    $('#search-showing-content')[0].classList.add('search-visible')
+    $('#search-showing-background')[0].classList.add('search-visible')
+    setTimeout("$('#search-field').focus()", 50)
 
   $('#search-field').ghostHunter({
-    results: "#results",
+    results: "#search-results",
     onKeyUp: true,
     onPageLoad: true,
-    result_template: "<div><a id='gh-{{ref}}' class='gh-search-item' href='{{link}}'><p><h2>{{title}}</h2><h4>{{pubDate}}</h4></p></a></div>"
+    info_template: "",
+    result_template: "<div id='gh-{{ref}}' class='gh-search-item'><h2><a href='{{link}}'>{{title}}</a></h2><h4>{{pubDate}}</h4></div>"
   });
 
   $(window).keyup (ev) ->
     if ev.keyCode == 27
-      $('#search-form-close-button').trigger('click')
+      $('#search-form-close-button-icon').trigger('click')
 

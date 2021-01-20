@@ -426,7 +426,7 @@
 }
 
 #search-showing-background {
-  display: none;
+  visibility: hidden;
   position: absolute;
   top: 0%;
   left: 0%;
@@ -435,11 +435,12 @@
   background-color: black;
   z-index: 1001;
   -moz-opacity: 0.5;
-  opacity: 0.5;
   filter: alpha(opacity=50);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
 #search-showing-content {
-  display: none;
+  visibility: hidden;
   position: absolute;
   top: 25%;
   left: 25%;
@@ -451,7 +452,28 @@
   background-color: white;
   z-index: 1002;
   overflow: auto;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
+
+#search-showing-content.search-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 9999;
+}
+
+#search-showing-background.search-visible {
+  visibility: visible;
+  opacity: 0.5;
+  z-index: 9998;
+}
+
+.search-visible {
+  visibility: visible!important;
+}
+
 
 #search-form-close-button {
   display: flex;
@@ -459,8 +481,79 @@
   position: sticky;
   right: 15px;
   top: 0;
+  text-align: center;
 }
 #search-form-close-button-icon {
   margin-left: auto;
   order: 2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  svg {
+    margin: 0 auto;
+    display: block;
+  }
 }
+
+#search-field {
+  visibility: visible;
+  border: none;
+  border-bottom: 2px solid $primary-color;
+  font-size: 1.5rem;
+  padding: 0 0 10px 0 ;
+  border-radius: 0;
+  background-color: white;
+  text-align: center;
+  width: auto;
+
+}
+
+.gh-search-item {
+  > h2 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    > a {
+      @extend %dotted-link;
+    }
+
+  }
+  > h4 {
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .gh-search-item {
+    > h4 {
+      font-size: small;
+    }
+  }
+
+  #search-field {
+    width: auto;
+    font-size: small;
+  }
+
+  #search-showing-content {
+    top: 20%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    padding: 0px;
+    border-radius: 8px;
+  }
+
+  #search-form-close-button {
+    right: 8px;
+    top: 8px;
+  }
+
+  #search-form-close-button-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
