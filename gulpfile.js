@@ -1,70 +1,90 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var cssvariables = require('postcss-css-variables');
-var cleanCSS = require('gulp-clean-css');
-var autoprefixer = require('autoprefixer');
-var gutil = require('gulp-util');
-var addsrc = require('gulp-add-src');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var terser = require('gulp-terser');
-var changed = require('gulp-changed');
-var header = require('gulp-header');
-var coffee = require("gulp-coffee");
-var plumber = require('gulp-plumber');
-var wait = require('gulp-wait');
-var zip = require('gulp-zip');
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+let postcss = require('gulp-postcss');
+let cssvariables = require('postcss-css-variables');
+let cleanCSS = require('gulp-clean-css');
+let autoprefixer = require('autoprefixer');
+let gutil = require('gulp-util');
+let addsrc = require('gulp-add-src');
+let concat = require('gulp-concat');
+let uglify = require('gulp-uglify');
+let terser = require('gulp-terser');
+let changed = require('gulp-changed');
+let header = require('gulp-header');
+let coffee = require("gulp-coffee");
+let plumber = require('gulp-plumber');
+let wait = require('gulp-wait');
+let zip = require('gulp-zip');
 
-var browserSync = require('browser-sync').create();
-var pkg = require('./package.json');
-var _s = require('underscore.string');
+let browserSync = require('browser-sync').create();
+let pkg = require('./package.json');
+let _s = require('underscore.string');
 
-var PORT = {
+let PORT = {
   "GHOST": 2368,
   "BROWSERSYNC": 3000
 };
 
-var buildDir = './build/';
-var exportDir = './dist/';
+let bundleName = _s.slugify(pkg.name);
 
-var dist = {
-  "name": _s.slugify(pkg.name),
-  "css": 'assets/css',
-  "js": 'assets/js'
+let dist = {
+  "css": {
+    "dir": 'assets/css',
+    "name": bundleName + '.css'
+  },
+  "js": {
+    "dir": 'assets/js',
+    "commonName": bundleName + ".common.js",
+    "vendorName": bundleName + ".vendor.js",
+    "postName": bundleName + ".post.js"
+  },
+  "zip": {
+    "name": bundleName + ".zip",
+    "dir": 'dist/'
+  },
+  "build": {
+    "dir": 'build/',
+    "src": 'build/**/*',
+  }
 };
 
-var src = {
+
+let src = {
   "sass": {
-    "main": 'assets/scss/' + dist.name + '.scss',
-    "files": ['assets/scss/**/*.scss']
+    "main": 'assets/src/scss/' + bundleName + '.scss',
+    "files": ['assets/src/scss/**/**'],
+    "vendor": [
+      'assets/src/scss/font-awesome/**/**',
+      'node_modules/bourbon/core/**/**',
+    ]
   },
   "js": {
     "common": {
-      "main": ['assets/js/src/__init.coffee',
-        'assets/js/src/main.coffee',
-        'assets/js/src/cover.coffee'
+      "main": ['assets/src/coffee/__init.coffee',
+        'assets/src/coffee/main.coffee',
+        'assets/src/coffee/cover.coffee'
       ],
       "vendor": [
-        'assets/vendor/jquery-3.5.1.min.js',
-        'assets/vendor/jquery.toc.min.js',
-        'assets/vendor/fastclick.js',
-        'assets/vendor/pace.min.js',
-        'assets/vendor/readingTime.min.js',
-        'assets/vendor/jquery.ghosthunter.js'
+        'assets/src/vendor/jquery-3.5.1.min.js',
+        'assets/src/vendor/jquery.toc.min.js',
+        'assets/src/vendor/fastclick.js',
+        'assets/src/vendor/pace.min.js',
+        'assets/src/vendor/readingTime.min.js',
+        'assets/src/vendor/jquery.ghosthunter.js',
       ]
     },
     "post": [
-      'assets/vendor/jquery.fitvids.js',
-      'assets/js/src/prism.js'
+      'assets/src/vendor/jquery.fitvids.js',
+      'assets/src/vendor/prism.js'
     ]
   },
   "css": {
-    "main": 'assets/css/' + dist.name + '.css',
-    "vendor": ['assets/scss/bourbon/**/**']
+    "vendor": [
+      'assets/src/vendor/prism.css',
+    ]
   }
 };
-var banner = ["/**",
+let banner = ["/**",
   ` * ${pkg.name} - ${pkg.description}`,
   ` * @version ${pkg.version}`,
   ` * @link    ${pkg.homepage}`,
@@ -78,52 +98,53 @@ gulp.task('js-common', function () {
   return gulp.src(src.js.common.main)
     .pipe(plumber())
     .pipe(coffee())
-    .pipe(concat(dist.name + '.common.js'))
+    .pipe(concat(dist.js.commonName))
     .pipe(terser().on('error', gutil.log))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.js));
+    .pipe(gulp.dest(dist.js.dir));
 });
 
 gulp.task('js-vendor', function () {
   return gulp.src(src.js.common.vendor)
     .pipe(plumber())
-    .pipe(changed(dist.js))
-    .pipe(concat(dist.name + '.vendor.js'))
+    .pipe(changed(dist.js.dir))
+    .pipe(concat(dist.js.vendorName))
     .pipe(terser().on('error', gutil.log))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.js));
+    .pipe(gulp.dest(dist.js.dir));
 })
 
 
 gulp.task('js-post', function () {
   return gulp.src(src.js.post)
     .pipe(plumber())
-    .pipe(changed(dist.js))
-    .pipe(concat(dist.name + '.post.js'))
+    .pipe(changed(dist.js.dir))
+    .pipe(concat(dist.js.postName))
     .pipe(uglify({
       compress: {
         drop_console: true
       }
     }))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.js));
+    .pipe(gulp.dest(dist.js.dir));
 });
 
 gulp.task('css', function () {
-  return gulp.src(src.css.vendor, {allowEmptyArray: true})
-    .pipe(changed(dist.css))
+  return gulp.src(src.sass.vendor, {allowEmptyArray: true})
+    .pipe(changed(dist.css.dir))
     .pipe(addsrc(src.sass.main))
     .pipe(plumber())
     .pipe(wait(100))
     .pipe(sass({outputStyle: 'expanded'}).on('error', gutil.log))
-    .pipe(concat('' + dist.name + '.css'))
+    .pipe(addsrc(src.css.vendor))
+    .pipe(concat(dist.css.name))
     .pipe(postcss([autoprefixer(), cssvariables({preserve: true})]))
     .pipe(cleanCSS({
       level: {1: {specialComments: 0}},
       compatibility: 'ie9'
     }))
     .pipe(header(banner))
-    .pipe(gulp.dest(dist.css))
+    .pipe(gulp.dest(dist.css.dir))
     .pipe(browserSync.reload({stream: true}));
 });
 
@@ -145,21 +166,18 @@ gulp.task('watch', gulp.series('preBuild', function () {
 gulp.task('build', gulp.series('preBuild', function () {
   return gulp.src([
     "**",
-    "!assets/scss", "!assets/scss/**/*",
-    "!assets/vendor/**/*",
-    "!assets/js/src/*",
-    "!node_modules", "!node_modules/**",
-    "!build", "!build/**",
-    "!dist", "!dist/**"
+    "!assets", "!assets/src/**/*/",
+    "!node_modules", "!node_modules/**/*",
+    "!build", "!build/**/*",
+    "!dist", "!dist/**/*"
   ])
-    .pipe(gulp.dest(buildDir));
+    .pipe(gulp.dest(dist.build.dir));
 }));
 
 gulp.task('zip', gulp.series('build', function () {
-  var fileName = pkg.name + '.zip';
-  return gulp.src(['build/**/*'])
-    .pipe(zip(fileName))
-    .pipe(gulp.dest(exportDir));
+  return gulp.src([dist.build.src])
+    .pipe(zip(dist.zip.name))
+    .pipe(gulp.dest(dist.zip.dir));
 }));
 
 gulp.task('default', gulp.parallel('watch'));

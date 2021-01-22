@@ -1,0 +1,20 @@
+.pagination {
+  text-align: center;
+  margin: 0 1rem 2.5rem 1rem;
+}
+
+.posts {
+
+  &.index {
+    font-size: .8rem;
+    color: $gray-dark;
+  }
+
+  &.newer {
+    margin-right: 1rem;
+  }
+
+  &.older {
+    margin-left: 1rem;
+  }
+}
