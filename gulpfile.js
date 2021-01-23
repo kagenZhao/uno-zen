@@ -7,14 +7,14 @@ let autoprefixer = require('autoprefixer');
 let gutil = require('gulp-util');
 let addsrc = require('gulp-add-src');
 let concat = require('gulp-concat');
-let uglify = require('gulp-uglify');
-let terser = require('gulp-terser');
+let uglify = require('gulp-uglify-es').default;
 let changed = require('gulp-changed');
 let header = require('gulp-header');
 let coffee = require("gulp-coffee");
 let plumber = require('gulp-plumber');
 let wait = require('gulp-wait');
 let zip = require('gulp-zip');
+var jslint = require('gulp-jslint');
 
 let browserSync = require('browser-sync').create();
 let pkg = require('./package.json');
@@ -34,9 +34,14 @@ let dist = {
   },
   "js": {
     "dir": 'assets/js',
-    "commonName": bundleName + ".common.js",
+    "name": bundleName + '.js',
+    "postName": bundleName + ".post.js",
     "vendorName": bundleName + ".vendor.js",
-    "postName": bundleName + ".post.js"
+    "temp": {
+      "dir": 'assets/src/js',
+      "commonName": bundleName + ".temp.common.js",
+      "postName": bundleName + ".temp.post.js",
+    }
   },
   "zip": {
     "name": bundleName + ".zip",
@@ -65,15 +70,16 @@ let src = {
         'assets/src/coffee/cover.coffee'
       ],
       "vendor": [
-        'assets/src/vendor/jquery-3.5.1.min.js',
-        'assets/src/vendor/jquery.toc.min.js',
-        'assets/src/vendor/fastclick.js',
-        'assets/src/vendor/pace.min.js',
-        'assets/src/vendor/readingTime.min.js',
+        // 'assets/src/vendor/Zepto-1.2.0.js', // head
+        'assets/src/vendor/jQuery-3.5.1.js', // head
+        'assets/src/vendor/pace.min.js', // head
+        'assets/src/vendor/fastclick.js', //
         'assets/src/vendor/jquery.ghosthunter.js',
       ]
     },
     "post": [
+      'assets/src/vendor/readingTime.min.js',
+      'assets/src/vendor/jquery.toc.min.js',
       'assets/src/vendor/jquery.fitvids.js',
       'assets/src/vendor/prism.js'
     ]
@@ -98,10 +104,9 @@ gulp.task('js-common', function () {
   return gulp.src(src.js.common.main)
     .pipe(plumber())
     .pipe(coffee())
-    .pipe(concat(dist.js.commonName))
-    .pipe(terser().on('error', gutil.log))
-    .pipe(header(banner))
-    .pipe(gulp.dest(dist.js.dir));
+    .pipe(concat(dist.js.temp.commonName))
+    .pipe(jslint().on('error', gutil.log))
+    .pipe(gulp.dest(dist.js.temp.dir));
 });
 
 gulp.task('js-vendor', function () {
@@ -109,24 +114,18 @@ gulp.task('js-vendor', function () {
     .pipe(plumber())
     .pipe(changed(dist.js.dir))
     .pipe(concat(dist.js.vendorName))
-    .pipe(terser().on('error', gutil.log))
-    .pipe(header(banner))
+    .pipe(jslint().on('error', gutil.log))
+    .pipe(uglify().on('error', gutil.log))
     .pipe(gulp.dest(dist.js.dir));
 })
-
 
 gulp.task('js-post', function () {
   return gulp.src(src.js.post)
     .pipe(plumber())
-    .pipe(changed(dist.js.dir))
-    .pipe(concat(dist.js.postName))
-    .pipe(uglify({
-      compress: {
-        drop_console: true
-      }
-    }))
-    .pipe(header(banner))
-    .pipe(gulp.dest(dist.js.dir));
+    .pipe(changed(dist.js.temp.dir))
+    .pipe(concat(dist.js.temp.postName))
+    .pipe(jslint().on('error', gutil.log))
+    .pipe(gulp.dest(dist.js.temp.dir));
 });
 
 gulp.task('css', function () {
@@ -148,7 +147,26 @@ gulp.task('css', function () {
     .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-post'))
+gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-post', function () {
+  return gulp.src([
+    dist.js.temp.dir + "/" + dist.js.temp.commonName,
+  ])
+    .pipe(changed(dist.js.dir))
+    .pipe(concat(dist.js.name))
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(header(banner))
+    .pipe(gulp.dest(dist.js.dir));
+}, function () {
+  return gulp.src([
+    dist.js.temp.dir + "/" + dist.js.temp.commonName,
+    dist.js.temp.dir + "/" + dist.js.temp.postName,
+  ])
+    .pipe(changed(dist.js.dir))
+    .pipe(concat(dist.js.postName))
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(header(banner))
+    .pipe(gulp.dest(dist.js.dir));
+}))
 gulp.task('preBuild', gulp.series('css', 'js'))
 
 gulp.task('watch', gulp.series('preBuild', function () {

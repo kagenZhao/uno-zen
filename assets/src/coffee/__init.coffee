@@ -13,8 +13,6 @@ do ->
     attr: (k, v) -> if v? then app.dataset[k] = v else app.dataset[k]
 
     context: ->
-      # get the context from the first class name of body
-      # https://github.com/TryGhost/Ghost/wiki/Context-aware-Filters-and-Helpers
       classNameList = document.body.className.split(' ')
       regex = /(.*?)-template/
       className = ''

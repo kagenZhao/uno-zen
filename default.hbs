@@ -3,16 +3,17 @@
 <head>
   <title>{{meta_title}}</title>
   {{> meta}}
-  <link href='https://fonts.googleapis.com/css?family=Raleway:400,600%7CRoboto+Slab:300,400' rel='stylesheet'
-        type='text/css'>
   <link rel="stylesheet" type="text/css" href="{{asset "css/uno-zen.css"}}"/>
+  <script src="{{asset "js/uno-zen.vendor.js"}}" type="text/javascript" charset="utf-8"></script>
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
 <div id="search-showing-content">
   <div id="search-form-close-button">
     <div id="search-form-close-button-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.021,13.435,1.414,24.042,0,22.628,10.607,12.021,0,1.414,1.414,0,12.021,10.607,22.628,0l1.414,1.414L13.435,12.021,24.042,22.628l-1.414,1.414Z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12.021,13.435,1.414,24.042,0,22.628,10.607,12.021,0,1.414,1.414,0,12.021,10.607,22.628,0l1.414,1.414L13.435,12.021,24.042,22.628l-1.414,1.414Z"></path>
+      </svg>
     </div>
   </div>
   <div>
@@ -34,28 +35,23 @@
     {{> footer}}
   </section>
 </main>
-<script>
-  var ghost_api_key = "77a814f693ac0ee9853c3d642a"
-  var ghost_root_url = "/ghost/api/v3";
-</script>
-{{ghost_foot}}
-<script>
-  var ghosthunter_key = ghost_api_key;
-</script>
-<script src="{{asset "js/uno-zen.vendor.js"}}" type="text/javascript" charset="utf-8"></script>
-<script src="{{asset "js/uno-zen.common.js"}}" type="text/javascript" charset="utf-8"></script>
 {{#is "post, page"}}
   <script src="{{asset "js/uno-zen.post.js"}}" type="text/javascript" charset="utf-8"></script>
   <script>
     $("#toc").toc({content: "article", headings: "h1, h2, h3, h4, h5, h6"});
   </script>
+{{else}}
+  <script src="{{asset "js/uno-zen.js"}}" type="text/javascript" charset="utf-8"></script>
 {{/is}}
+{{ghost_foot}}
 <script>
-  if ('addEventListener' in document) {
-    document.addEventListener('DOMContentLoaded', function(){
-      FastClick.attach(document.body);
-    }, false);
-  }
+  var ghost_root_url = "/ghost/api/v3";
+  var ghosthunter_key = ghost_api_key;
+</script>
+<script>
+  $(function () {
+    FastClick.attach(document.body);
+  });
 </script>
 {{> google-analytics}}
 </body>

@@ -19,7 +19,6 @@ body {
 
 body {
   color: $gray-darker;
-  font-family: $sans-font;
 }
 
 mark {
@@ -58,7 +57,6 @@ h4,
 h5,
 h6 {
   color: $gray-darkest;
-  font-family: $serif-font;
   -webkit-font-smoothing: antialiased;
   font-weight: lighter;
 }
