@@ -17,6 +17,9 @@ do ->
       regex = /(.*?)-template/
       className = ''
       for item in classNameList
+        if item == "paged"
+          className = "paged"
+          continue
         temp = regex.exec(item)
         if temp != null then className = temp[1]
       if className is '' then 'error' else className
@@ -55,7 +58,6 @@ do ->
       return 'mobile' if (w <= 480)
       return 'tablet' if (w <= 1024)
       'desktop'
-
 
   Uno.attr 'page', Uno.context()
   Uno.attr 'device', Uno.device()

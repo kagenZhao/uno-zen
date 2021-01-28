@@ -27,6 +27,10 @@
         className = '';
         for (i = 0, len = classNameList.length; i < len; i++) {
           item = classNameList[i];
+          if (item === "paged") {
+            className = "paged";
+            continue;
+          }
           temp = regex.exec(item);
           if (temp !== null) {
             className = temp[1];

@@ -40,6 +40,7 @@ let dist = {
     "temp": {
       "dir": 'assets/src/js',
       "commonName": bundleName + ".temp.common.js",
+      "commonjsName": bundleName + ".temp.commonjs.js",
       "postName": bundleName + ".temp.post.js",
     }
   },
@@ -68,6 +69,9 @@ let src = {
       "main": ['assets/src/coffee/__init.coffee',
         'assets/src/coffee/main.coffee',
         'assets/src/coffee/cover.coffee'
+      ],
+      "mainjs": [
+        'assets/src/vendor/infinite-paged.js'
       ],
       "vendor": [
         // 'assets/src/vendor/Zepto-1.2.0.js', // head
@@ -105,6 +109,15 @@ gulp.task('js-common', function () {
     .pipe(plumber())
     .pipe(coffee())
     .pipe(concat(dist.js.temp.commonName))
+    .pipe(jslint().on('error', gutil.log))
+    .pipe(gulp.dest(dist.js.temp.dir));
+});
+
+gulp.task('js-common-js', function () {
+  return gulp.src(src.js.common.mainjs)
+    .pipe(plumber())
+    .pipe(changed(dist.js.dir))
+    .pipe(concat(dist.js.temp.commonjsName))
     .pipe(jslint().on('error', gutil.log))
     .pipe(gulp.dest(dist.js.temp.dir));
 });
@@ -147,9 +160,10 @@ gulp.task('css', function () {
     .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-post', function () {
+gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-common-js', 'js-post', function () {
   return gulp.src([
     dist.js.temp.dir + "/" + dist.js.temp.commonName,
+    dist.js.temp.dir + "/" + dist.js.temp.commonjsName,
   ])
     .pipe(changed(dist.js.dir))
     .pipe(concat(dist.js.name))
@@ -159,6 +173,7 @@ gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-post', function () {
 }, function () {
   return gulp.src([
     dist.js.temp.dir + "/" + dist.js.temp.commonName,
+    dist.js.temp.dir + "/" + dist.js.temp.commonjsName,
     dist.js.temp.dir + "/" + dist.js.temp.postName,
   ])
     .pipe(changed(dist.js.dir))
@@ -176,8 +191,9 @@ gulp.task('watch', gulp.series('preBuild', function () {
     files: ['assets/**/*.*']
   });
   gulp.watch(src.sass.files).on('change', gulp.series('css'));
-  gulp.watch(src.js.common.main, {allowEmpty: true}).on('change', gulp.series('js-common', browserSync.reload));
-  gulp.watch(src.js.post).on('change', gulp.series('js-post', browserSync.reload))
+  gulp.watch(src.js.common.main, {allowEmpty: true}).on('change', gulp.series('js', browserSync.reload));
+  gulp.watch(src.js.common.mainjs, {allowEmpty: true}).on('change', gulp.series('js', browserSync.reload));
+  gulp.watch(src.js.post).on('change', gulp.series('js', browserSync.reload))
   gulp.watch('./**/*.hbs').on('change', browserSync.reload);
 }));
 
