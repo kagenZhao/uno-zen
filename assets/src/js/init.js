@@ -48,7 +48,7 @@
         let id = element.attr('id');
         element.html('');
         element.addClass('deep-link');
-        element.append('<a href=#' + id + 'class=\"title-link\">' + text + '</a>');
+        element.append('<a href=#' + id + ' class=\"title-link\">' + text + '</a>');
       })
     }
 
