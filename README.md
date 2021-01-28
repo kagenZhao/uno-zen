@@ -8,6 +8,8 @@
 
 > 感谢 Kikobeats 的主题 [Uno Zen](https://github.com/Kikobeats/uno-zen)，本主题由此改造而成
 <br>
+ 感谢 bestswifter 进行的加工和优化
+
 > **NOTE**: 商用版本可以在这里购买 [Uno Urban](https://sellfy.com/p/G5kK).
 
 [<img src="http://i.imgur.com/LCSB4Ca.jpg">](http://kikobeats.com)
@@ -17,40 +19,32 @@
 # 介绍
 
 **Uno Zen** 是基于 [Uno](https://github.com/daleanthony/Uno) 开发的一个 Ghost 博客主题。它提供了功能和样式上一些小的改进和优化。
+<br>
+后续 经过 [bestswifter](https://bestswifter.com) 加工和优化, 提供了不少心的功能
 
-### 我对原主题的改动
+### 我在两人的基础上新增了以下内容:
+* 适配 ghost api v3
+* 添加本地搜索功能
+* 文章页右侧添加了目录
+* 添加了归档页
+* Disqus加载时间调整到滚动下方时再加载
+* 修复一些问题和bug
 
-* 使用 highlight.js 实现代码高亮
-* 使用 [Font Awesome](http://fontawesome.io/) 管理社交按钮图标
-* 快速集成 Disqus 评论管理系统
-* 修改中文版 ghost 下，文章天数计算错误的bug
 
-###你可以访问我的博客查看 [demo](https://bestswifter.com)
+###你可以访问我的博客查看 [demo](https://www.kagenz.com)
 
 ## 安装
 
-首先确保你的服务器已经安装了 Git
-
-进入 ghost 根目录下的 theme 文件夹(`path-to-ghost/content/themes`)，然后运行以下命令：
-
+本地 clone git
 ```bash
-git clone https://github.com/bestswifter/uno-zen.git
+git clone https://github.com/kagenZhao/uno-zen.git
 ```
+或直接下载zip包
 
-重启 ghost 服务，进入后台就可以看到 Uno-zen 这个主题了。
+进入*ghost后台* > *Design* > *Upload a theme*
+点击 *ACTIVE*
 
 ## 准备工作
-
-你需要使用 jQuery，不过我更推荐使用 [Zepto](https://github.com/madrobby/zepto)，这是一个轻量级的 jQuery 替代库，它完全兼容 jQuery：
-
-```html
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
-<script>jQuery = Zepto</script>
-```
-
-你需要把它添加到博客的 Footer 里面：
-
-![](http://i.imgur.com/xUXdFeH.png)
 
 ## 更新
 
@@ -62,14 +56,53 @@ git pull origin
 
 ## 自定义
 
-我对原主题做了一些改动，主要有：
+### 归档页
+根据Ghost API, 我默认已经实现了`page-archives.hbs`
+<br>
+你需要做的就是
+- 进入Ghost后台界面
+- 点击 `New Page` 
+- 设置标题 为Archives 或者你喜欢的名字
+- 打开`Code injection`, 再footer中填入
+  `<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>`
+- 保存发布
+- 点击Design, 再顶部添加引导连接如图
+
+
+<div>
+<img src="https://oss.kagenz.com/ghost/20210128175444.png" width="30%">
+<img src="https://oss.kagenz.com/ghost/20210128175828.png" width="30%">
+<img src="https://oss.kagenz.com/ghost/20210128175936.png" width="30%">
+<img src="https://oss.kagenz.com/ghost/20210128180202.png">
+</div>
+
+
+### 本地搜索&目录
+这两个功能用到了Ghost api, 按下面步骤开启api
+- 进入Ghost后台 点击Integrations
+- 点击`Add custom integration` 输入名字, `Create`
+- 复制`Content API key`
+- 打开`Code injection`, 再header中填入`<script>var ghost_api_key = "YOUR API KEY";</script>`
+- 保存即可
+
+<div>
+<img src="https://oss.kagenz.com/ghost/20210128180442.png" width="30%">
+<img src="https://oss.kagenz.com/ghost/20210128180639.png">
+<img src="https://oss.kagenz.com/ghost/20210128180801.png" width="49%">
+<img src="https://oss.kagenz.com/ghost/20210128180920.png" width="49%">
+<img src="https://oss.kagenz.com/ghost/20210128181106.png">
+</div>
+
+
 
 ### 代码高亮
 
-采用 [highlight.js](https://highlightjs.org/) 做代码高亮，只需要修改 `default.hbs` 中的主题即可，默认采用 tomorrow 主题：
+采用 [prism.js](https://prismjs.com/) 做代码高亮, 默认加载了基础css和js
+<br>
+为了减少js的加载数量, 使用者需要在每一篇post中单独设置*Code injection* > `Post footer {{ghost_foot}}`
 
 ```js
-<link rel="stylesheet" href="/highlight/styles/tomorrow.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-bash.min.js"></script>
 ```
 
 ### 社交按钮与图标
@@ -130,4 +163,4 @@ uno-zen 是一个非常优秀的主题，作者还在不断的对他进行更新
 
 ## License
 
-MIT © [bestswifter](https://bestswifter.com)
+MIT © [KagenZhao](https://www.kagenz.com)

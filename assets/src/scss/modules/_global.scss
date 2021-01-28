@@ -6,8 +6,13 @@ html {
   font-size: $unit * 1.125;
   height: 100%;
   max-height: 100%;
+  overflow-y: auto;
 
   &.expanded {
+    overflow-y: hidden;
+  }
+
+  &.search-visible {
     overflow-y: hidden;
   }
 }

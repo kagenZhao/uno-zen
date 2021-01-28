@@ -5,12 +5,7 @@
       this.page.url = "{{url absolute="true"}}";
       this.page.identifier = "ghost-{{comment_id}}"
     };
-    (function() {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://kagenz.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
+    var disqus_shortname = disqus_shortname || "kagenz";
   </script>
 </footer>
 

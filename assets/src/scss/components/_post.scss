@@ -462,6 +462,8 @@
   transform: scale(0.5);
   opacity: 0;
   transition: all 0.3s ease-in-out;
+  overflow-y: scroll;
+  overflow-y: overlay;
 }
 
 #search-showing-content.search-visible {
@@ -469,6 +471,10 @@
   opacity: 1;
   transform: scale(1);
   z-index: 9999;
+}
+
+#search-showing-content-wapper {
+
 }
 
 #search-showing-background.search-visible {

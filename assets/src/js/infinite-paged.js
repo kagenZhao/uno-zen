@@ -38,9 +38,6 @@
     pageination.innerHTML = '';
     var resPageination = this.response.querySelector('.pagination');
     pageination.innerHTML = resPageination.innerHTML;
-    // resPageination.forEach(function (item) {
-    //   currentPageination.appendChild(document.importNode(item, true));
-    // })
 
     // set next link
     setupElement()
