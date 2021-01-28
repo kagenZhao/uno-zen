@@ -1,9 +1,8 @@
 # Uno Zen for Ghost
 
-![Last version](https://img.shields.io/github/tag/bestswifter/uno-zen.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/uno-zen/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/uno-zen)
-![Ghost version](https://img.shields.io/badge/Ghost-0.8.x-brightgreen.svg?style=flat-square)
-![Node version](https://img.shields.io/node/v/uno-zen.svg?style=flat-square)
+![Last version](https://img.shields.io/github/v/tag/kagenzhao/uno-zen.svg?sort=semver&style=flat-square)
+![Ghost version](https://img.shields.io/badge/Ghost-3.x-brightgreen.svg?style=flat-square)
+![Node version](https://img.shields.io/badge/node-10.x%7C12.x%7C14.x-brightgreen)
 
 
 > 感谢 Kikobeats 的主题 [Uno Zen](https://github.com/Kikobeats/uno-zen)，本主题由此改造而成
