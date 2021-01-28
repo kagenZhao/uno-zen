@@ -5,9 +5,7 @@
 ![Node version](https://img.shields.io/badge/node-10.x%7C12.x%7C14.x-brightgreen)
 
 
-> 感谢 Kikobeats 的主题 [Uno Zen](https://github.com/Kikobeats/uno-zen)，本主题由此改造而成
-<br>
- 感谢 bestswifter 进行的加工和优化
+> 感谢 Kikobeats 的主题 [Uno Zen](https://github.com/Kikobeats/uno-zen)，本主题由此改造而成<br>感谢 bestswifter 进行的加工和优化
 
 > **NOTE**: 商用版本可以在这里购买 [Uno Urban](https://sellfy.com/p/G5kK).
 
