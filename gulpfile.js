@@ -147,7 +147,7 @@ gulp.task('css', function () {
     }))
     .pipe(header(banner))
     .pipe(gulp.dest(dist.css.dir))
-    .pipe(browserSync.reload({stream: true}));
+    // .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('js', gulp.series('js-vendor', 'js-common', 'js-post', function () {
